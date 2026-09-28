@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- PWA Manifest -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#F4C430">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="/logo.png">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -482,7 +488,7 @@
         </div>
         <div class="footer-col">
             <h4>Contact</h4>
-            <div class="footer-contact-item"><i class="fas fa-phone-alt"></i><div><div style="color: var(--white); font-weight: 500; margin-bottom: 3px;">Téléphone</div><a href="tel:+237695957593">+237 695 957 593</a></div></div>
+            <div class="footer-contact-item"><i class="fas fa-phone-alt"></i><div><div style="color: var(--white); font-weight: 500; margin-bottom: 3px;">Ville</div><a href="tel:+237695957593">Douala</a></div></div>
             <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><div><div style="color: var(--white); font-weight: 500; margin-bottom: 3px;">Localisation</div><span>Cameroun</span></div></div>
         </div>
     </div>
@@ -591,6 +597,19 @@
     /* ===== SMOOTH SCROLL ===== */
     try { document.querySelectorAll('a[href^="#"]').forEach(function(anchor) { anchor.addEventListener('click', function(e) { e.preventDefault(); var target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); }); } catch (e) {}
 })();
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('✅ SW Registered:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('❌ SW Registration Failed:', error);
+                });
+        });
+    }
+
 </script>
 </body>
 </html>
