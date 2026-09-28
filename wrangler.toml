@@ -1,5 +1,5 @@
 name = "cantinecami-mns"
 compatibility_date = "2026-09-26"
 
-[site]
-bucket = "./"
+[assets]
+directory = "./"
